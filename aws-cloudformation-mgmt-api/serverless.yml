@@ -1,0 +1,42 @@
+service: aws-cloudformation-mgmt-api
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+provider:
+  name: aws
+  profile: personal
+  region: us-east-1
+  runtime: python2.7
+  apiKeys:
+    - aws-cloudformation-mgmt-api-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+        - cloudformation:*
+        - ecr:*
+        - ecs:*
+        - ec2:*
+        - iam:*
+        - logs:*
+        - rds:*
+      Resource:
+        - "*"
+
+functions:
+  up:
+    handler: up.lambda_handler
+    events:
+      - http:
+          path: mgmt/up
+          method: post
+          cors: true
+          private: true
+  destroy:
+    handler: destroy.lambda_handler
+    events:
+      - http:
+          path: mgmt/destroy
+          method: post
+          cors: true
+          private: true
