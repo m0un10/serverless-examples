@@ -9,9 +9,6 @@ class test_context(dict):
         self.region = region
 
 def lambda_handler(event, context):
-    print type(event)
-    print 'hello'
-    print event['body']
 
     data = json.loads(event['body'])
 

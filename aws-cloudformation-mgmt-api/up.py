@@ -39,10 +39,6 @@ def lambda_handler(event, context):
     else:
         session = boto3.session.Session()
 
-    print db_credential
-    print stack_name
-    print key_name
-
     session.client('cloudformation').create_stack(
         StackName=stack_name,
         TemplateURL='https://s3.amazonaws.com/awsiammedia/public/sample/ManagingSecrets/secrets-s3-blog.template',
