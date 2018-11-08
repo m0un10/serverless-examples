@@ -9,14 +9,14 @@ class test_context(dict):
         self.region = region
 
 def lambda_handler(event, context):
-
+    
     stack_name = "default"
     key_name = "default"
     instance_type = "t2.micro"
 
     data = json.loads(event['body'])
 
-    if 'stack_-name' in data:
+    if 'stack-name' in data:
         stack_name = data['stack-name']
     if 'key-name' in data:
         key_name = data['key-name']
@@ -84,11 +84,13 @@ if __name__ == "__main__":
     parser.add_argument("-p","--profile", help="Profile name to use when connecting to aws.", default='personal')
     parser.add_argument("-n","--name", help="Name of the stack")
     parser.add_argument("-c","--credential", help="Password to be used for the stack")
+    parser.add_argument("-k","--key", help="Key to be used")
     args = parser.parse_args()
     event =  {
         'body': json.dumps({
             'stack-name': args.name,
-            'db-credential': args.credential
+            'db-credential': args.credential,
+            'key-name': args.key
         })
     }
     context = test_context(args.profile,args.region)
