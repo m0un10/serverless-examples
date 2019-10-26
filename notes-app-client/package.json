@@ -3,24 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aws-amplify": "^0.4.1",
-    "react": "^16.4.0",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.4.0",
-    "react-router-bootstrap": "^0.24.4",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4"
+    "aws-amplify": "^1.1.40",
+    "react": "^16.9.0",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.9.0",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.2",
+    "react-stripe-elements": "^5.0.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://YOUR_S3_DEPLOY_BUCKET_NAME --delete",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-runtime": "^7.0.0-beta.3"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
